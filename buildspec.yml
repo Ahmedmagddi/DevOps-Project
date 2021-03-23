@@ -10,13 +10,13 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t ahmed-devops-project-react-app .
-      - docker tag ahmed-devops-project-react-app:latest 115473357299.dkr.ecr.eu-west-2.amazonaws.com/ahmed-devops-project-react-app:latest
+      - docker build -t react-spring-boot .
+      - docker tag react-spring-boot:latest 115473357299.dkr.ecr.eu-west-2.amazonaws.com/react-spring-boot:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push 115473357299.dkr.ecr.eu-west-2.amazonaws.com/ahmed-devops-project-react-app:latest
+      - docker push 115473357299.dkr.ecr.eu-west-2.amazonaws.com/react-spring-boot:latest
 artifacts:
   files:
     - imageDetail.json
