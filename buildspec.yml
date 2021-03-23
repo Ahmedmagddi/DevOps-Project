@@ -5,18 +5,18 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - $(aws ecr get-login --region eu-west-2 --no-include-email)
+      - $(aws ecr get-login --region us-east-1 --no-include-email)
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t react-spring-boot .
-      - docker tag react-spring-boot:latest 115473357299.dkr.ecr.eu-west-2.amazonaws.com/react-spring-boot:latest
+      - docker tag react-spring-boot:latest public.ecr.aws/i6e3t9g0/react-spring-boot:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push 115473357299.dkr.ecr.eu-west-2.amazonaws.com/react-spring-boot:latest
+      - docker push public.ecr.aws/i6e3t9g0/react-spring-boot:latest
 artifacts:
   files:
     - imageDetail.json
