@@ -6,17 +6,20 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $REPO_URL
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t react-spring-boot .
-      - docker tag react-spring-boot:latest $REPO_URL/$REPO_NAME:latest
+      - docker tag react-spring-boot:latest $REPO_URL/$REPO_NAME:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
       - docker push $REPO_URL/$REPO_NAME:latest
+      - docker push $REPO_URL/$REPO_NAME:$IMAGE_TAG
 artifacts:
   files:
     - imageDetail.json
