@@ -12,8 +12,8 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t react-spring-boot .
-      - docker tag react-spring-boot:latest $REPO_URL/$REPO_NAME:$IMAGE_TAG
+      - docker build -t react-spring87 .
+      - docker tag react-spring87:latest $REPO_URL/$REPO_NAME:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
