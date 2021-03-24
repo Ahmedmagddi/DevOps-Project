@@ -4,8 +4,8 @@ Parameters:
   SubnetID:
     Type: string
 
-imageUri:
-   Type: string
+  imageUri:
+     Type: string
 
 Resources:
   Cluster:
