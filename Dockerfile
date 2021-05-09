@@ -9,4 +9,3 @@ RUN ["chmod", "+x", "mvnw"]
 RUN source ~/.bash_profile && ./mvnw clean verify
 RUN ["chmod", "+x", "/app/start-app.sh"]
 ENTRYPOINT ["/app/start-app.sh"]
-test git push
